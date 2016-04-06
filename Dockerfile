@@ -1,4 +1,5 @@
 FROM buildpack-deps:trusty
+ARG NODE_VERSION
 
 # gpg keys listed at https://github.com/nodejs/node
 RUN set -ex \
@@ -16,7 +17,7 @@ RUN set -ex \
   done
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 4.2.3
+ENV NODE_VERSION ${NODE_VERSION}
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
